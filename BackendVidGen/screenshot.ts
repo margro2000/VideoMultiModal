@@ -4,6 +4,11 @@ import fs from 'node:fs'
 
 import StealthPlugin from 'puppeteer-extra-plugin-stealth'
 
+
+import { setTimeout } from "node:timers/promises";
+
+// ...
+
 puppeteer.use(StealthPlugin());
 
 
@@ -36,7 +41,7 @@ export async function takeSnapshot(url) {
     });
 
 
-    // await page.waitForTimeout(timeout);
+    await setTimeout(4000);
 
     const snapshotDir = './snapshots';
     if (!fs.existsSync(snapshotDir)) {
@@ -56,6 +61,36 @@ export async function takeSnapshot(url) {
     const csvLine = `${snapshotFileName}, ${url}\n`;
     fs.appendFileSync('snapshots.csv', csvLine);
 
+    console.log("SNAPSHOTTED")
     await browser.close()
 
+
+
+    return snapshotFileName;
+
 }
+
+
+
+export function generateVerticalScroll(snapshotFileName: string) {
+    const { exec } = require('child_process');
+
+    console.log("GENERATING VERTICAL SCROLL")
+
+
+
+    exec(`./vertical_scroll.sh ${snapshotFileName} output.mp4`, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error: ${error.message}`);
+            return;
+        }
+        if (stderr) {
+            console.error(`stderr: ${stderr}`);
+            return;
+        }
+        console.log(`stdout: ${stdout}`);
+    });
+}
+
+
+
