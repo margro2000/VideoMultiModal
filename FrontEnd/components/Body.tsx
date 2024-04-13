@@ -28,10 +28,10 @@ import { useRouter } from 'next/navigation';
 import { toast, Toaster } from 'react-hot-toast';
 
 const promptSuggestions = [
-  'A city view with clouds',
-  'A beautiful glacier',
-  'A forest overlooking a mountain',
-  'A saharan desert',
+  'Fun and catchy tune showcasing Oracle\'s new cloud offerings',
+  'Video with EDM generating excitedment Fireworks product launch',
+  'Chill video showing the variety of products Deepgram offers',
+  'Exciting content about the good AIE Foundaiton does for the world',
 ];
 
 const generateFormSchema = z.object({
@@ -142,7 +142,7 @@ const Body = ({
     <div className="flex justify-center items-center flex-col w-full lg:p-0 p-4 sm:mb-28 mb-0">
       <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 mt-10">
         <div className="col-span-1">
-          <h1 className="text-3xl font-bold mb-10">Generate a QR Code</h1>
+          <h1 className="text-3xl font-bold mb-10">Generate Your Video Here</h1>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)}>
               <div className="flex flex-col gap-4">
@@ -153,10 +153,10 @@ const Body = ({
                     <FormItem>
                       <FormLabel>URL</FormLabel>
                       <FormControl>
-                        <Input placeholder="roomgpt.io" {...field} />
+                        <Input placeholder="oracle.com" {...field} />
                       </FormControl>
                       <FormDescription>
-                        This is what your QR code will link to.
+                        This is what will be showcased in our video
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -167,16 +167,38 @@ const Body = ({
                   name="prompt"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Prompt</FormLabel>
+                      <FormLabel>Prompt for Audio Content</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="A city view with clouds"
+                          placeholder="Generate a fun and catchy tune showcasing Oracle's now cloud offerrings"
                           className="resize-none"
                           {...field}
                         />
                       </FormControl>
                       <FormDescription className="">
-                        This is what the image in your QR code will look like.
+                        Be as detailed as possible here to get the best results
+                      </FormDescription>
+
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+<FormField
+                  control={form.control}
+                  name="prompt"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Prompt For Video Content</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Specify your call to action- ie- go to our website, and important things you want to showcase in the video"
+                          className="resize-none"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormDescription className="">
+                        Be as detailed as possible here to get the best results
                       </FormDescription>
 
                       <FormMessage />

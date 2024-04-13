@@ -10,15 +10,10 @@ const Footer = () => (
             href="https://twitter.com/nutlope"
             className="hover:underline transition"
           >
-            Hassan
+            Margarita Groisman, Daniel Jacobs, Shayan Guha, Paras Savnani
           </a>{' '}
           and{' '}
-          <a
-            href="https://twitter.com/kevinhou22"
-            className="hover:underline transition"
-          >
-            Kevin
-          </a>
+      
           .
         </p>
         <div className="flex items-center gap-x-6 text-gray-400">
