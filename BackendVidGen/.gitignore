@@ -176,3 +176,5 @@ dist
 
 snapshots
 snapshot.csv
+
+*.mp4
