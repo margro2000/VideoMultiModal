@@ -6,7 +6,6 @@ import axios from 'axios';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth'
 
 
-import { setTimeout } from "node:timers/promises";
 
 // ...
 
@@ -111,7 +110,22 @@ export function appendAudioToVerticalScroll(snapshotFileName, audioFileName) {
 
 }
 
-export async function dowloandMp3fromURL(url, finalPath) {
-    const response = await axios.get(url, { responseType: 'arraybuffer' });
-    fs.writeFileSync(finalPath, response.data);
+import { setTimeout } from 'node:timers/promises';
+export async function dowloadMp3fromURL(url, finalPath, retry = 0) {
+    if (retry > 30) {
+        console.log("NO MORE RETRIES, GIVING UP")
+        return
+    }
+
+    try {
+        console.log(`TRYING TO DOWNLOAD ${url}`)
+
+        let response = await axios.get(url, { responseType: 'arraybuffer' });
+        fs.writeFileSync(finalPath, response.data);
+    } catch (e) {
+        console.log(`RETRYING ${url}`)
+        await setTimeout(10000);
+        await dowloadMp3fromURL(url, finalPath, retry + 1)
+    }
+
 }
