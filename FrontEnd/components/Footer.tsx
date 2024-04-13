@@ -12,9 +12,7 @@ const Footer = () => (
           >
             Margarita Groisman, Daniel Jacobs, Shayan Guha, Paras Savnani
           </a>{' '}
-          and{' '}
-      
-          .
+
         </p>
         <div className="flex items-center gap-x-6 text-gray-400">
           <a

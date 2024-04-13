@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import NavLink from './NavLink';
 
-let heroImages = ['/1.png', '/6.png', '/3.png', '/4.png', '/5.png', '/2.png'];
+let heroImages = ['/ai_eng_foundation_logo.jpeg', '/daily.jpg', '/Deepgram.jpg', '/FireWorksLogo.png', '/oracle.png', '/falAI2.png'];
 
 export default function Hero() {
   return (
@@ -21,16 +21,16 @@ export default function Hero() {
               href="/start"
               className="text-white bg-gray-800 hover:bg-gray-600 active:bg-gray-900 "
             >
-              Generate Video Here
+              Generate Video
             </NavLink>
-            {/* <NavLink
+            <NavLink
               target="_blank"
               href="https://github.com/Nutlope/qrGPT"
               className="text-gray-700 border hover:bg-gray-50"
               scroll={false}
             >
               Learn more
-            </NavLink> */}
+            </NavLink>
           </div>
           <div className="grid sm:grid-cols-3 grid-cols-2 gap-4 pt-10">
             {heroImages.map((image, idx) => (
