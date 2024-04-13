@@ -1,6 +1,7 @@
 import puppeteer from "puppeteer-extra";
 
 import fs from 'node:fs'
+import axios from 'axios';
 
 import StealthPlugin from 'puppeteer-extra-plugin-stealth'
 
@@ -73,13 +74,11 @@ export async function takeSnapshot(url) {
 
 
 export function generateVerticalScroll(snapshotFileName: string) {
-    const { exec } = require('child_process');
+    const { execSync } = require('child_process');
 
     console.log("GENERATING VERTICAL SCROLL")
 
-
-
-    exec(`./vertical_scroll.sh ${snapshotFileName} output.mp4`, (error, stdout, stderr) => {
+    execSync(`./vertical_scroll.sh ${snapshotFileName} output.mp4`, (error, stdout, stderr) => {
         if (error) {
             console.error(`Error: ${error.message}`);
             return;
@@ -90,7 +89,29 @@ export function generateVerticalScroll(snapshotFileName: string) {
         }
         console.log(`stdout: ${stdout}`);
     });
+
+
 }
 
 
+export function appendAudioToVerticalScroll(snapshotFileName, audioFileName) {
+    const { execSync } = require('child_process');
 
+    execSync(`./add_audio.sh ${snapshotFileName} '${audioFileName}'`, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error: ${error.message}`);
+            return;
+        }
+        if (stderr) {
+            console.error(`stderr: ${stderr}`);
+            return;
+        }
+        console.log(`stdout: ${stdout}`);
+    })
+
+}
+
+export async function dowloandMp3fromURL(url, finalPath) {
+    const response = await axios.get(url, { responseType: 'arraybuffer' });
+    fs.writeFileSync(finalPath, response.data);
+}

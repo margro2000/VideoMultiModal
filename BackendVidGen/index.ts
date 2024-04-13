@@ -1,28 +1,29 @@
-import { generateVerticalScroll, takeSnapshot } from "./screenshot";
-
-console.log("Hello via Bun!");
+import { appendAudioToVerticalScroll, dowloandMp3fromURL, generateVerticalScroll, takeSnapshot } from "./screenshot";
 
 
+let filename = await takeSnapshot("https://www.oracle.com/cloud/")
+generateVerticalScroll(filename)
+// dowloandMp3fromURL(url, "mp3/audio.mp3")
+appendAudioToVerticalScroll(filename + ".mp4", "mp3/cloud_chasers.mp3")
 
 
 import { Elysia } from 'elysia'
 import { cors } from "@elysiajs/cors";
 
-const app = new Elysia();
+// const app = new Elysia();
 
-app.use(cors({
+// app.use(cors({
 
-    origin: "*"
-}));
+//     origin: "*"
+// }));
 
-type GenerationParams = { url: string, prompt: string };
-app.post('/generate', async ({ params: GenerationParams }) => {
+// type GenerationParams = { url: string, prompt: string };
+// app.post('/generate', async ({ params: GenerationParams }) => {
 
-    let filename = await takeSnapshot("https://www.oracle.com/cloud/")
-    generateVerticalScroll(filename)
+//     let filename = await takeSnapshot("https://www.oracle.com/cloud/")
+//     generateVerticalScroll(filename)
+//     appendAudioToVerticalScroll(filename + ".mp4", "Cloud Chasers.mp3")
+//     return "DONE"
 
-
-    return "DONE"
-
-});
-app.listen(8000);
+// });
+// app.listen(8000);
