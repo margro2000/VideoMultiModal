@@ -8,11 +8,11 @@ import PlausibleProvider from 'next-plausible';
 
 const inter = Inter({ subsets: ['latin'] });
 
-let title = 'QrGPT - QR Code Generator';
+let title = 'Branded Video Gen';
 let description = 'Generate Incredible Branded Content in Seconds';
 let url = 'https://www.qrgpt.io';
-let ogimage = 'https://www.qrgpt.io/og-image.png';
-let sitename = 'qrGPT.io';
+// let ogimage = 'https://www.qrgpt.io/og-image.png';
+// let sitename = 'qrGPT.io';
 
 export const metadata: Metadata = {
   metadataBase: new URL(url),
@@ -21,21 +21,21 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.ico',
   },
-  openGraph: {
-    images: [ogimage],
-    title,
-    description,
-    url: url,
-    siteName: sitename,
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    images: [ogimage],
-    title,
-    description,
-  },
+  // openGraph: {
+  //   images: [ogimage],
+  //   title,
+  //   description,
+  //   url: url,
+  //   siteName: sitename,
+  //   locale: 'en_US',
+  //   type: 'website',
+  // },
+  // twitter: {
+  //   card: 'summary_large_image',
+  //   images: [ogimage],
+  //   title,
+  //   description,
+  // },
 };
 
 export default function RootLayout({
