@@ -111,7 +111,7 @@ export function appendAudioToVerticalScroll(snapshotFileName, audioFileName) {
 }
 
 import { setTimeout } from 'node:timers/promises';
-export async function dowloadMp3fromURL(url, finalPath, retry = 0) {
+export async function dowloadFilefromURL(url, finalPath, retry = 0) {
     if (retry > 30) {
         console.log("NO MORE RETRIES, GIVING UP")
         return
@@ -125,7 +125,7 @@ export async function dowloadMp3fromURL(url, finalPath, retry = 0) {
     } catch (e) {
         console.log(`RETRYING ${url}`)
         await setTimeout(10000);
-        await dowloadMp3fromURL(url, finalPath, retry + 1)
+        await dowloadFilefromURL(url, finalPath, retry + 1)
     }
 
 }
