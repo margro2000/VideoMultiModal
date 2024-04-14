@@ -19,7 +19,7 @@ def generate_video(prompt, avatar_url, gender):
     headers = {
     "accept": "application/json",
     "content-type": "application/json",
-    "Authorization" : "Basic c2F2bmFuaTVAZ21haWwuY29t:TN4Gs8LwIOFYV8pRkc5ef" #os.getenv("API_KEY_DID")
+    "Authorization" : "Basic {username:pwd}" #os.getenv("API_KEY_DID")
 }
     if gender == "Female":
         payload = {
